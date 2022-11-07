@@ -7,9 +7,15 @@ import { User } from '../classes/user';
 })
 export class UserService {
   private urlAPI: string = 'https://jsonplaceholder.typicode.com/users';
+  likeList: any[] = [];
 
   constructor(private http: HttpClient) {}
   getUsers() {
     return this.http.get<any>(this.urlAPI);
+  }
+  addLike(user: any) {
+    this.http.post(this.urlAPI, user);
+    this.likeList.push(user);
+    return this.http.post(this.urlAPI, user);
   }
 }

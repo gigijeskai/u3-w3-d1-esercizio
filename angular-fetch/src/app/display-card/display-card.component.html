@@ -1,3 +1,4 @@
+{{ likeList | json }}
 <div class="container">
   <div class="card my-5" style="width: 18rem" *ngFor="let item of userList">
     <img src="..." class="card-img-top" alt="{{ item.name }}" />
@@ -6,8 +7,18 @@
       <p class="card-text">
         {{ item.email }}
       </p>
-      <button type="button" class="btn btn-danger mx-2">Delete</button>
-      <button type="button" class="btn btn-primary mx-2">
+      <button
+        type="button"
+        class="btn btn-danger mx-2"
+        (click)="remove(item.id)"
+      >
+        Delete
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary mx-2"
+        (click)="addLike(item)"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
